@@ -5,6 +5,7 @@ class Game {
     let gameSize = {x: canvas.width, y: canvas.height}
     this.bodies = []
     this.bodies = this.bodies.concat(new Player(this, gameSize)) //Ahhh do these arguments represent this game and being inside what we've defined as gameSize?
+    this.bodies = this.bodies.concat(createEnemies(this))
     let tick = () => { //Updates game state at 60fps when utilizing request animation frame below.
         this.update()
         this.draw(screen, gameSize) // For drawing game bodies, uses gameSize from above.  Not sure what it does yet.
@@ -16,10 +17,10 @@ class Game {
     
 
     update(){
-        let noCollisions = (b1) => {
-            return this.bodies.filter(function (b2) { return colliding(b1,b2) }).length === 0
-        }
-        this.bodies = this.bodies.filter(noCollisions)
+        // let noCollisions = (b1) => {
+        //     return this.bodies.filter(function (b2) { return colliding(b1,b2) }).length === 0
+        // }
+        // this.bodies = this.bodies.filter(noCollisions)
         for (let i=0; i<this.bodies.length; i++){
             this.bodies[i].update()
         }
@@ -66,14 +67,33 @@ class Player {
 
 
 class Enemy {
+    constructor (game, center){
+        this.game = game
+        this.center = center
+        this.size = {x:15, y: 15}
+        this.patrolX = 500
+        this.speedX= -.7
+    }
 
+    update(){
+        this.center.x += this.speedX
+        this.patrolX += this.speedX
+    }
 } //Final curly brace for class Enemy 
+
+function createEnemies (game){
+    let enemies = []
+    for (let i=0; i<6; i++){
+        enemies.push(new Enemy(game, {x: 500, y: Math.random()*300}))
+    }
+    return enemies
+}
 
 
 class Bullet {
     constructor(center, velocity){
         this.center = center
-        this.size = {x:3, y:3}
+        this.size = {x:5, y:5}
         this.velocity = velocity
     }
     update(){
@@ -92,7 +112,6 @@ class Bullet {
 class Keyboarder {
 
     constructor(){
-
      let keyState = {}
     
      window.addEventListener('keydown', function (e) {
@@ -126,15 +145,15 @@ function drawRect(screen, body){ //Hmm, but why are we passing in these?
         body.size.x, body.size.y)
 }
 
-function colliding (b1, b2) { 
-    return !(
-      b1 === b2 ||
-          b1.center.x + b1.size.x / 2 < b2.center.x - b2.size.x / 2 ||
-          b1.center.y + b1.size.y / 2 < b2.center.y - b2.size.y / 2 ||
-          b1.center.x - b1.size.x / 2 > b2.center.x + b2.size.x / 2 ||
-          b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y / 2
-    )
-  }
+// function colliding (b1, b2) { 
+//     return !(
+//       b1 === b2 ||
+//           b1.center.x + b1.size.x / 2 < b2.center.x - b2.size.x / 2 ||
+//           b1.center.y + b1.size.y / 2 < b2.center.y - b2.size.y / 2 ||
+//           b1.center.x - b1.size.x / 2 > b2.center.x + b2.size.x / 2 ||
+//           b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y / 2
+//     )
+//   }
 
 
 window.addEventListener("load", function(){  //Adding the event listener now so I can see stuff show up. 
