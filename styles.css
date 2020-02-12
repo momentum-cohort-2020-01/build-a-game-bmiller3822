@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.canvas {
+    background-color: rgb(47,129,183);
+    margin: 0 auto;
+    display: block;
+    margin-top: 100px;
+}
+
