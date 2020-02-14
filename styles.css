@@ -4,19 +4,6 @@
     box-sizing: border-box;
 }
 
-/* :root {
-    --background-color: #fffffe;  
-    --headline-color: #272343;
-    --paragraph-color: #2d334a;
-    --button-color: #ffd803;
-    --button-text-color: #272343;
-    --stroke-color: #272343;
-    --highlight-color: #ffd803;
-    --secondary-color: #e3f6f5;
-    --tertiary-color: #bae8e8;
-    --default-fonts: 'IBM Plex Mono', monospace;
-  } */
-
   :root{
       --background-color: rgb(23	79	135	);
       --ship-color: rgb(236	78	59	);

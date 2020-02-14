@@ -9,7 +9,7 @@ class Game {
     
     let tick = () => { 
         
-        if(this.bodies.length<60){
+        if(this.bodies.length<50){
             console.log("HELLO!")
             this.bodies=this.bodies.concat(createEnemies(this))
         }
