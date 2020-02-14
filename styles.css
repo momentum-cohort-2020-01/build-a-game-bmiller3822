@@ -4,10 +4,42 @@
     box-sizing: border-box;
 }
 
+/* :root {
+    --background-color: #fffffe;  
+    --headline-color: #272343;
+    --paragraph-color: #2d334a;
+    --button-color: #ffd803;
+    --button-text-color: #272343;
+    --stroke-color: #272343;
+    --highlight-color: #ffd803;
+    --secondary-color: #e3f6f5;
+    --tertiary-color: #bae8e8;
+    --default-fonts: 'IBM Plex Mono', monospace;
+  } */
+
+  :root{
+      --background-color: rgb(23	79	135	);
+      --ship-color: rgb(236	78	59	);
+      --bullet-color: rgb(254	192	50	);
+      --enemy-color: rgb(157	157	157	);
+      --score-color:rgba(106	205	209	 .8);
+      --powerup-color: rgb(43	252	46	);
+  }
+
 .canvas {
-    background-color: rgb(47,129,183);
+    background-color: var(--background-color);
     margin: 0 auto;
     display: block;
     margin-top: 100px;
+}
+
+h1, h2, h3{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.title{
+    margin: 1rem;
+    padding: 1rem;
 }
 
